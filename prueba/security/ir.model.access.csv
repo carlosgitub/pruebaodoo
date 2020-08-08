@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_prueba_lineas_factura_all,access_prueba_lineas_factura,model_prueba_lineas_factura,base.group_user,1,0,0,0
+access_prueba_lineas_factura_managers,access_prueba_lineas_factura_manager,model_prueba_lineas_factura,base.group_erp_manager,1,1,1,1
+access_prueba_factura_managers,access_prueba_factura_manager,model_prueba_factura,base.group_erp_manager,1,1,1,1
+access_prueba_factura_line_managers,access_prueba_factura_line_manager,model_prueba_factura_line,base.group_erp_manager,1,1,1,1
+access_prueba_lineas_factura_tag_all,access_prueba_lineas_factura_tag_all,model_lineas_factura_tag,base.group_user,1,1,1,1

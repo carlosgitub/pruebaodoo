@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form  -->
+        <record id="line_factura_form_view" model="ir.ui.view">
+            <field name="name">line_factura.form.view</field>
+            <field name="model">prueba.lineas_factura</field>
+            <field name="arch" type="xml">
+                <form string="Lineas_factura Form">
+                    <sheet>
+                        <group>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                            <field name="codigo"/>
+                        </group>
+                        <group>
+                            <field name="tag_ids" widget="many2many_tags" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="line_factura_tree_view" model="ir.ui.view">
+            <field name="name">line_factura.tree.view</field>
+            <field name="model">prueba.lineas_factura</field>
+            <field name="arch" type="xml">
+                <tree string="Lineas_factura Tree">
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="codigo"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Accion -->
+        <record id="action_line_factura_view" model="ir.actions.act_window">
+            <field name="name">Lineas_facturas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">prueba.lineas_factura</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--Menus-->
+        <menuitem id="menu_prueba_root"
+                  name="Prueba"
+                  web_icon="prueba,static/description/icon.png"
+                  sequence="1"/>
+
+        <menuitem id="action_menuitem_prueba"
+                  parent="menu_prueba_root"
+                  action="action_line_factura_view"
+                  name="Lineas_facturas"
+                  sequence="1"/>
+    </data>
+</odoo>

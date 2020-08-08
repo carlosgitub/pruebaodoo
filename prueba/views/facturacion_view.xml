@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form  -->
+        <record id="facturacion_form_view" model="ir.ui.view">
+            <field name="name">factura.form.view</field>
+            <field name="model">prueba.factura</field>
+            <field name="arch" type="xml">
+                <form string="Lineas_factura Form">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="nuevo,confirmado,realizado"/>
+                        <button name="confirm" string="Confirmar" type="object"
+                                attrs="{
+                                'invisible': [('state', '=', 'confirmado')],
+                                'readonly': [('state', '=', 'confirmado')],
+                                }"/>
+                        <button name="cancel" string="Cancelar" type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <h2>
+
+                                <field name="name" readonly="1"/>
+                            </h2>
+                        </group>
+                        <group>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="company_id"/>
+                        </group>
+
+                        <notebook>
+                            <page string="Lineas Factura" name="facturacion_line_ids">
+                                <field name="facturacion_line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="lineas_factura_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                        <group>
+                            <field name="notas" nolabel="1" placeholder="Notas..."/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="facturacion_tree_view" model="ir.ui.view">
+            <field name="name">factura.tree.view</field>
+            <field name="model">prueba.factura</field>
+            <field name="arch" type="xml">
+                <tree string="Factura Tree">
+                    <field name="active"/>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Accion -->
+        <record id="action_facturacion_view" model="ir.actions.act_window">
+            <field name="name">Factura</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">prueba.factura</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="action_menuitem_factura"
+                  parent="prueba.menu_prueba_root"
+                  action="action_facturacion_view"
+                  name="Factura"
+                  sequence="1"/>
+    </data>
+</odoo>
